@@ -1,0 +1,19 @@
+All software found (18) - Times found:
+Software	FBI	
+Software	Acrobat PDFWriter 2.01	
+Software	GPL Ghostscript 8.71	
+Software	Acrobat Distiller 3.02	
+Software	Adobe PageMaker 6.52	
+Software	Adobe InDesign CC 13.1 (Macintosh)	
+Software	Adobe InDesign CC 2017 (Windows)	
+Software	Adobe PDF Library 15.0	
+Software	Prince 9.0 rev 5 (www.princexml.com)	
+Software	Adobe InDesign CS6 (Macintosh)	
+Software	Adobe PDF Library 10.0.1	
+Software	Microsoft Office 2003	
+Software	Adobe PDF Library 11.0	
+Software	Microsoft Office	
+Software	Adobe InDesign 14.0 (Windows)	
+Software	Adobe Photoshop CS6	
+Software	Microsoft Office 2007	
+Software	IRIS     ; modified using iText 2.1.7 by 1T3XT	

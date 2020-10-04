@@ -1,0 +1,140 @@
+Отчёт: 
+1)был создан снимок с камеры телефона, с включенным гео-тегом
+2)передан на виртуальную машину кали
+3) по мимо разрешения на передачу гео тега пришлось включить геонастройку на телефоне
+4)данные полученные утилитой ExifTool
+
+ExifTool Version Number         : 11.93
+File Name                       : IMG.jpg
+Directory                       : Desktop
+File Size                       : 5.8 MB
+File Modification Date/Time     : 2020:10:04 06:04:30-04:00
+File Access Date/Time           : 2020:10:04 06:04:30-04:00
+File Inode Change Date/Time     : 2020:10:04 06:04:30-04:00
+File Permissions                : rw-rw-rw-
+File Type                       : JPEG
+File Type Extension             : jpg
+MIME Type                       : image/jpeg
+Exif Byte Order                 : Big-endian (Motorola, MM)
+Image Description               : smart
+Make                            : HUAWEI
+Camera Model Name               : KSA-LX9
+Orientation                     : Horizontal (normal)
+X Resolution                    : 72
+Y Resolution                    : 72
+Resolution Unit                 : inches
+Software                        : KSA-L29 9.1.0.272(C10E2R2P3)
+Modify Date                     : 2020:10:04 13:00:31
+Y Cb Cr Positioning             : Centered
+Document Name                   : 
+Exposure Time                   : 1/248
+F Number                        : 1.8
+Exposure Program                : Program AE
+ISO                             : 103
+Exif Version                    : 0210
+Date/Time Original              : 2020:10:04 13:00:31
+Create Date                     : 2020:10:04 13:00:31
+Components Configuration        : Y, Cb, Cr, -
+Shutter Speed Value             : 1/999963365
+Aperture Value                  : 1.8
+Brightness Value                : -2
+Exposure Compensation           : 0
+Metering Mode                   : Center-weighted average
+Light Source                    : Daylight
+Flash                           : No Flash
+Focal Length                    : 0.0 mm
+Maker Note Unknown Text         : Auto
+Sub Sec Time                    : 476306
+Sub Sec Time Original           : 476306
+Sub Sec Time Digitized          : 476306
+Flashpix Version                : 0100
+Color Space                     : sRGB
+Exif Image Width                : 3120
+Exif Image Height               : 4160
+Interoperability Index          : R98 - DCF basic file (sRGB)
+Interoperability Version        : 0100
+Sensing Method                  : One-chip color area
+File Source                     : Digital Camera
+Scene Type                      : Directly photographed
+Custom Rendered                 : Custom
+Exposure Mode                   : Auto
+White Balance                   : Auto
+Focal Length In 35mm Format     : 26 mm
+Scene Capture Type              : Standard
+Gain Control                    : None
+Contrast                        : Normal
+Saturation                      : Normal
+Sharpness                       : Normal
+Subject Distance Range          : Unknown
+GPS Version ID                  : 2.2.0.0
+GPS Latitude Ref                : North
+GPS Longitude Ref               : East
+GPS Altitude Ref                : Above Sea Level
+GPS Time Stamp                  : 10:00:30
+GPS Processing Method           : CELLID
+GPS Date Stamp                  : 2020:10:04
+Compression                     : JPEG (old-style)
+Thumbnail Offset                : 1286
+Thumbnail Length                : 24570
+JFIF Version                    : 1.01
+Image Width                     : 3120
+Image Height                    : 4160
+Encoding Process                : Baseline DCT, Huffman coding
+Bits Per Sample                 : 8
+Color Components                : 3
+Y Cb Cr Sub Sampling            : YCbCr4:2:0 (2 2)
+Aperture                        : 1.8
+Image Size                      : 3120x4160
+Megapixels                      : 13.0
+Shutter Speed                   : 1/248
+Create Date                     : 2020:10:04 13:00:31.476306
+Date/Time Original              : 2020:10:04 13:00:31.476306
+Modify Date                     : 2020:10:04 13:00:31.476306
+Thumbnail Image                 : (Binary data 24570 bytes, use -b option to extract)
+GPS Altitude                    : 218.9 m Above Sea Level
+GPS Date/Time                   : 2020:10:04 10:00:30Z
+GPS Latitude                    : 55 deg 45' 09.10" N
+GPS Longitude                   : 37 deg 36' 46.37" E
+Focal Length                    : 0.0 mm
+GPS Position                    : 55 deg 45' 09.10" N, 37 deg 36' 46.37" E
+Light Value                     : 9.6
+
+Как можно заметить в метаданных есть указанное местоположение GPS,
+которое совпадает с местом съёмки, помимо этого есть информация о:
+названии файла, размере, типе, модели телефона и камеры, разрешении, 
+програмном обеспечении, данные о световых настройках фото, и другое
+
+
+FOCA
+
+1)устанавливаем ПО
+затравляем на www.fbi.gov
+анализируем найденные файлы
+всего скачано 434 файла
+анализируем метаданные всех файлов
+найдено 
+27 пользователей
+129 папок
+7 принтеров
+17 емэйлов
+4 системы
+0 паролей
+0 серверов
+(данные о метаданных прикреплены в репозитории)
+анализируем на малварь
+ничего вредоносного не обнаружено
+
+CCleaner
+анализ системы показал что можно убрать около 10 ГБ даты, основное
+кол-во которой это неочищенная корзина 
+анализ регистра выявил 513 проблем с регистром, основные это 
+неизвестные DLL-файлы и установочные ссылки и неиспользуемые расширения
+
+RStudio
+был создан а затем удалён файл hello_world.txt размером 18 КБ,
+с помощью утилиты RStudio выозможно было его восттановить
+после затирания свободного места сначала нулями, потом рандомной датой
+RStudio не нашла данного файла
+
+
+

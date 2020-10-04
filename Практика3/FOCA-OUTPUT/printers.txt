@@ -1,0 +1,8 @@
+All printers found (7) - Times found:
+Printer Name	\\f2432104-w\D10023633-CP	
+Printer Name	\\omn2e3632\OMN2E3632-P	
+Printer Name	\\F5077741\D10023601-CP	
+Printer Name	\\P0164E\HPLJ4	
+Printer Name	\\f2396895\D10034465-P	
+Printer Name	\\F5077741\D10023610-CP	
+Printer Name	\\f5077741\D10023610-CP	
