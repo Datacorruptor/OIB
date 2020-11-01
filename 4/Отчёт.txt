@@ -1,0 +1,59 @@
+в  папке по пути "C:\ForChiper" создан файл "New Text Document.txt" с текстом "Кривко 01.11.20"
+к папке был применён аттрибут "Шифровать содержимое для защиты данных"
+на иконке файла можно заметить значок замка
+при попытке открыть с того же пользователя файл открывается без проблем
+зайдя под другим пользователем файл открыть не удалось
+открыв certmgr.msc через окно "выполнить" можно найти сертификат по пути "Личные/Сертификаты"
+нажав правой кнопкой мыши и выбрав "Все задачи" можно нажать на пункт "Экспорт" для того чтобы получит сертификат
+после экспортирования сертификата зайдем от другого пользователя, импортируем сертификат и попробуем открыть файл
+после проделывания данных действий, мы получаем доступ к файлу
+
+теперь снимем аттрибут с нашей папки
+и будем её теперь шифровать с помощью утилиты cipher
+сначала узнаем состояние папки на данный момент
+
+C:\>cipher /s:C:\ForChiper
+
+ Listing C:\ForChiper\
+ New files added to this directory will not be encrypted.
+
+U New Text Document.txt
+
+теперь произведём шифрование нашей папки
+
+C:\>cipher /e /s:C:\ForChiper
+
+ Setting the directory C:\ForChiper to encrypt new files [OK]
+
+ Encrypting files in C:\ForChiper\
+
+New Text Document.txt [OK]
+
+2 file(s) [or directorie(s)] within 2 directorie(s) were encrypted.
+
+Converting files from plaintext to ciphertext may leave sections of old
+plaintext on the disk volume(s). It is recommended to use command
+CIPHER /W:directory to clean up the disk after all converting is done.
+
+зайдя от лица другого пользователя у нас нет возможности открыть этот файл
+расшифруем этот файл
+C:\>cipher /d /s:C:\ForChiper
+
+ Setting the directory C:\ForChiper not to encrypt new files [OK]
+
+ Decrypting files in C:\ForChiper\
+
+New Text Document.txt [OK]
+
+2 file(s) [or directorie(s)] within 2 directorie(s) were decrypted.
+
+теперь у всех пользователей снова есть доступ к нему
+
+Зашифруем новую флешку с помошью BitLocker
+изначально на ней будет значёк серого замка и у нас будет к ней доступ
+после переподключения флешки Доступ фозможен только по паролю
+после ввода пароля у нас есть возможность убрать пароль, для снятия защиты
+после сообщения о завершении шифрования дском можно снова пользоваться, так же как и до шифрования
+
+в соответствии с задание проделываем операции в программе VeraCrypt
+контейнер находится в гитхабе, пароль - Qwerty11
