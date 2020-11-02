@@ -1,0 +1,165 @@
+Проанализируем хеш
+Analyzing '$6$jLA.1OwWM1uGyWTJ$xMETR7yrEky/pfF7bSpQ0i36A910R3JrE5c6uiuIQjQFF0gVCO7Hum.zI1lDsEZcjM07syG7B1ggxhtdAW9xN1'
+[+] SHA-512 Crypt [Hashcat Mode: 1800]
+
+создание хеша на линукс
+python -c "import random,string,crypt;
+> randomsalt = ''.join(random.sample(string.ascii_letters,8));
+> print crypt.crypt('MySecretPassword', '\$6\$%s\$' % randomsalt)"
+$6$NhPkqzVd$1CXZO.H6qo5.VCBls0OOIMO3JO7Rw4gqvvsyHgYGeQSOe35.jarZcpUYXRtPqJfMIpm0MTS3OpdJdkBMNGSag1
+
+теперь создадим нового пользователя и поставим ему этот хеш в файле /etc/shadow
+затем обновим группу паролей sudo update-passwd - safely update /etc/shadow
+
+теперь зайдём на нашего пользователя
+su test
+Password: (здесь вводим наш пароль)
+
+узнаем кто мы
+$ whoami
+test
+
+команды для проверки контрольных сумм
+$ cp /etc/group group
+$ sha1sum group
+f3fde3d33b288a0adbfb3e02772ef949354e9b3c  group
+$ sha1sum group> group.sha1
+$ cat group.sha1
+f3fde3d33b288a0adbfb3e02772ef949354e9b3c  group
+$ sha1sum -c group.sha1
+group: OK
+
+после изменения файла хеш сумма не совпадает
+$sha1sum -c group.sha1
+sha1sum: group.sha1: no properly formatted SHA1 checksum lines found
+
+
+Шифрование PGP
+
+$ gpg --full-generate-key                                                 
+gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.                          
+This is free software: you are free to change and redistribute it.                             
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+  (14) Existing key from card
+Your selection? 1
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 2048
+Requested keysize is 2048 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 0
+Key does not expire at all
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: mirea
+Email address: 
+Comment: 
+You selected this USER-ID:
+    "mirea"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: /home/kali/.gnupg/trustdb.gpg: trustdb created
+gpg: key 61F535C02D9FD149 marked as ultimately trusted
+gpg: directory '/home/kali/.gnupg/openpgp-revocs.d' created
+gpg: revocation certificate stored as '/home/kali/.gnupg/openpgp-revocs.d/6E7C0B009390531B485B8FDE61F535C02D9FD149.rev'
+public and secret key created and signed.
+
+pub   rsa2048 2020-11-02 [SC]
+      6E7C0B009390531B485B8FDE61F535C02D9FD149
+uid                      mirea
+sub   rsa2048 2020-11-02 [E]
+
+$ ls -la ~/.gnupg/
+total 28
+drwx------  4 kali kali 4096 Nov  2 07:39 .
+drwxr-xr-x 29 kali kali 4096 Oct 30 12:54 ..
+drwx------  2 kali kali 4096 Nov  2 07:38 openpgp-revocs.d
+drwx------  2 kali kali 4096 Nov  2 07:38 private-keys-v1.d
+-rw-r--r--  1 kali kali 1423 Nov  2 07:38 pubring.kbx
+-rw-------  1 kali kali   32 May 16 14:24 pubring.kbx~
+-rw-------  1 kali kali 1280 Nov  2 07:39 trustdb.gpg
+
+$ gpg --list-keys
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+/home/kali/.gnupg/pubring.kbx
+-----------------------------
+pub   rsa2048 2020-11-02 [SC]
+      6E7C0B009390531B485B8FDE61F535C02D9FD149
+uid           [ultimate] mirea
+sub   rsa2048 2020-11-02 [E]
+
+$ gpg -a -o gpgkey.asc --export mirea
+$ gpg --import gpgkey.asc
+gpg: key 61F535C02D9FD149: "mirea" not changed
+gpg: Total number processed: 1
+gpg:              unchanged: 1
+
+gpg --edit-key mirea
+gpg (GnuPG) 2.2.20; Copyright (C) 2020 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Secret key is available.
+
+sec  rsa2048/61F535C02D9FD149
+     created: 2020-11-02  expires: never       usage: SC  
+     trust: ultimate      validity: ultimate
+ssb  rsa2048/0D40AC5C18C22CB9
+     created: 2020-11-02  expires: never       usage: E   
+[ultimate] (1). mirea
+
+gpg> trust
+sec  rsa2048/61F535C02D9FD149
+     created: 2020-11-02  expires: never       usage: SC  
+     trust: ultimate      validity: ultimate
+ssb  rsa2048/0D40AC5C18C22CB9
+     created: 2020-11-02  expires: never       usage: E   
+[ultimate] (1). mirea
+
+Please decide how far you trust this user to correctly verify other users' keys
+(by looking at passports, checking fingerprints from different sources, etc.)
+
+  1 = I don't know or won't say
+  2 = I do NOT trust
+  3 = I trust marginally
+  4 = I trust fully
+  5 = I trust ultimately
+  m = back to the main menu
+
+Your decision? 5
+Do you really want to set this key to ultimate trust? (y/N) y
+
+Подписи и шифрование
+
+подпись подходит
+gpg: Signature made Mon 02 Nov 2020 07:57:31 AM EST
+gpg:                using RSA key 6E7C0B009390531B485B8FDE61F535C02D9FD149
+gpg: Good signature from "mirea" [ultimate]
+
+подпись не подходит
+gpg: Signature made Mon 02 Nov 2020 07:57:31 AM EST
+gpg:                using RSA key 6E7C0B009390531B485B8FDE61F535C02D9FD149
+gpg: BAD signature from "mirea" [ultimate]
+
